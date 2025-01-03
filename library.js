@@ -1,5 +1,30 @@
 let realDiv = document.querySelector(".bookcard");
-let containerDiv = document.querySelector(".container")
+let containerDiv = document.querySelector(".container");
+let showDialog = document.querySelector("#showDialog");
+let dialog = document.querySelector("#dialog");
+
+
+showDialog.addEventListener("click", function() {
+    dialog.showModal();
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function Book(title, author, pages, readstate) {
