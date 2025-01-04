@@ -54,6 +54,10 @@
 
   }
 
+  .bookcard:first-of-type {
+    display: none;
+  }
+
   .bookcard {
     height: max-content;
     color: rgb(11, 37, 37);
@@ -62,4 +66,8 @@
   .slot {
     display: flex;
     gap: 10px;
+  }
+
+  .delete {
+    width: 100px;
   }
