@@ -37,8 +37,11 @@ const myLibrary = [];
 
 confirmbutton.addEventListener("click", function(event) {
     let titleValue = document.getElementById("title").value
+    let authorValue = document.getElementById("author").value
+    let pages = document.getElementById("pages").value
+    let readstate = document.getElementById("cars").value
     event.preventDefault()
-    let book = new Book(titleValue, "selam", 31, false);
+    let book = new Book(titleValue, authorValue, pages, readstate);
     console.log(book)
     myLibrary.push(book);
     console.log()
@@ -89,10 +92,10 @@ function addBookToLibrary(array) {
         clonedDiv.querySelector("#bookname").textContent = array[array.length -1].title;
         clonedDiv.querySelector("#author").textContent = array[array.length -1].author;
         clonedDiv.querySelector("#pages").textContent = array[array.length -1].pages;
-        if (array[array.length -1].readstate === true) {
-            clonedDiv.querySelector("#readstate").textContent = "Okundu"
+        if (array[array.length -1].readstate == "read") {
+            clonedDiv.querySelector("#readstate").textContent = "Read"
         } else {
-            clonedDiv.querySelector("#readstate").textContent = "Okunacak"
+            clonedDiv.querySelector("#readstate").textContent = "To Read"
         }
 
         var deleteButton = document.createElement("BUTTON");
