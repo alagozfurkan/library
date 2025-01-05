@@ -14,14 +14,15 @@ var nodes = document.querySelector(".container").childNodes;
 var deleteButton = document.createElement("BUTTON");
 deleteButton.classList.add("delete");
 showDialog.addEventListener("click", function() {
-    /*while (nodes.length > 0) {
-        nodes[0].remove();
-    }*/
+    
     dialog.showModal();
 });
 
-closebutton.addEventListener("click", function() {
+closebutton.addEventListener("click", function(event) {
+    
     dialog.close();
+    
+    
 })
 
 
@@ -100,7 +101,7 @@ function addBookToLibrary(array) {
 
         var deleteButton = document.createElement("BUTTON");
 
-
+        // implement a readstate changer
 
         deleteButton.addEventListener("click", function() {
            deleteButton.parentElement.remove()
