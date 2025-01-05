@@ -100,11 +100,13 @@ function addBookToLibrary(array) {
         }
 
         var deleteButton = document.createElement("BUTTON");
+        var readButton = document.createElement("BUTTON");
+        var buttons = document.createElement("div");
 
         // implement a readstate changer
 
         deleteButton.addEventListener("click", function() {
-           deleteButton.parentElement.remove()
+           deleteButton.parentElement.parentElement.remove()
             
         })
 
@@ -112,14 +114,19 @@ function addBookToLibrary(array) {
 
 
 
+        buttons.classList.add("buttons");
+        clonedDiv.appendChild(buttons);
 
-
-
+        readButton.classList.add("readbutton");
+        readButton.textContent = "Read"
+        buttons.appendChild(readButton);
         deleteButton.classList.add("delete");
         deleteButton.textContent = "Delete";
+        buttons.classList.add("buttons");
+        clonedDiv.appendChild(buttons);
         containerDiv.appendChild(clonedDiv);
-        clonedDiv.appendChild(deleteButton);
-      
+        buttons.appendChild(deleteButton);
+        
     }
     
 

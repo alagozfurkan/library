@@ -6,7 +6,7 @@
   /* 2. Remove default margin */
   * {
     margin: 0;
-    outline: 2px solid red;
+    
   }
   
   body {
@@ -58,11 +58,11 @@
 
   .container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
     grid-column: 2 / 7;
     grid-row: 2 / 6;
-    gap: 20px;
+    
 
   }
 
@@ -74,12 +74,38 @@
     
     color: rgb(11, 37, 37);
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 
     
   }
 
-  p {
-    height: max-content;
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .headers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    
+  }
+
+  .headers h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .bookcard p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .slot {
@@ -88,7 +114,7 @@
   }
 
   .delete {
-    width: 100px;
+    height: max-content;
   }
 
   .header {
