@@ -107,6 +107,18 @@ function addBookToLibrary(array) {
 
         deleteButton.addEventListener("click", function() {
            deleteButton.parentElement.parentElement.remove()
+        
+           
+        })
+
+        readButton.addEventListener("click" , function() {
+            if (readButton.parentElement.parentElement.querySelector("#readstate").textContent == "Read") {
+                readButton.parentElement.parentElement.querySelector("#readstate").textContent = "To Read"
+                
+            } else {
+                readButton.parentElement.parentElement.querySelector("#readstate").textContent = "Read"
+            }
+            
             
         })
 
