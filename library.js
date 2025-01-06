@@ -22,15 +22,7 @@ closebutton.addEventListener("click", function(event) {
     
     dialog.close();
     
-    
 })
-
-
-
-
-
-
-
 
 
 
@@ -42,61 +34,48 @@ confirmbutton.addEventListener("click", function(event) {
     let pages = document.getElementById("pages").value
     let readstate = document.getElementById("cars").value
     event.preventDefault()
-    let book = new Book(titleValue, authorValue, pages, readstate);
-    console.log(book)
-    myLibrary.push(book);
-    console.log()
+    bookCreater(titleValue, authorValue, pages, readstate);
     addBookToLibrary(myLibrary)
+    console.log(myLibrary)
     dialog.close()
+    
 })
       
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-function Book(title, author, pages, readstate) {
+function Book(title, author, pages, readstate, element) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.readstate = readstate;
     this.place = myLibrary.length;
+    this.element = realDiv.cloneNode(true);
     
+}
+
+
+function bookCreater(title, author, pages, readstate) {
+    let book = new Book(title, author, pages, readstate);
+    myLibrary.push(book);
 }
 
 
 
 
 
-
-
-
-
-
-
 function addBookToLibrary(array) {
-    
-        clonedDiv = realDiv.cloneNode(true);
-        clonedDiv.class = ".bookcard";
-        clonedDiv.querySelector("#bookname").textContent = array[array.length -1].title;
-        clonedDiv.querySelector("#author").textContent = array[array.length -1].author;
-        clonedDiv.querySelector("#pages").textContent = array[array.length -1].pages;
+
+        
+        
+        array[array.length -1].element.querySelector("#bookname").textContent = array[array.length -1].title;
+        array[array.length -1].element.querySelector("#author").textContent = array[array.length -1].author;
+        array[array.length -1].element.querySelector("#pages").textContent = array[array.length -1].pages;
         if (array[array.length -1].readstate == "read") {
-            clonedDiv.querySelector("#readstate").textContent = "Read"
+            array[array.length -1].element.querySelector("#readstate").textContent = "Read"
         } else {
-            clonedDiv.querySelector("#readstate").textContent = "To Read"
+            array[array.length -1].element.querySelector("#readstate").textContent = "To Read"
         }
 
         var deleteButton = document.createElement("BUTTON");
@@ -106,20 +85,32 @@ function addBookToLibrary(array) {
         // implement a readstate changer
 
         deleteButton.addEventListener("click", function() {
-           deleteButton.parentElement.parentElement.remove()
-        
+            
+            let found = array.find((elementt) => elementt.title == deleteButton.parentElement.parentElement.querySelector("#bookname").textContent)
+            deleteButton.parentElement.parentElement.remove()
+            if (array.length == 1) {
+                array.pop()
+            } else {
+                let x =  array.splice(found.place, 1);
+                console.log(myLibrary)
+           
+            }
+            
            
         })
 
         readButton.addEventListener("click" , function() {
+            let found = array.find((elementt) => elementt.element == readButton.parentElement.parentElement);
+            
             if (readButton.parentElement.parentElement.querySelector("#readstate").textContent == "Read") {
                 readButton.parentElement.parentElement.querySelector("#readstate").textContent = "To Read"
-                
+                found.readstate = "To Read"
             } else {
                 readButton.parentElement.parentElement.querySelector("#readstate").textContent = "Read"
+                found.readstate = "Read"
             }
             
-            
+            console.log(myLibrary)
         })
 
 
@@ -127,7 +118,7 @@ function addBookToLibrary(array) {
 
 
         buttons.classList.add("buttons");
-        clonedDiv.appendChild(buttons);
+        array[array.length -1].element.appendChild(buttons);
 
         readButton.classList.add("readbutton");
         readButton.textContent = "Read"
@@ -135,12 +126,11 @@ function addBookToLibrary(array) {
         deleteButton.classList.add("delete");
         deleteButton.textContent = "Delete";
         buttons.classList.add("buttons");
-        clonedDiv.appendChild(buttons);
-        containerDiv.appendChild(clonedDiv);
+        array[array.length -1].element.appendChild(buttons);
+        containerDiv.appendChild(array[array.length -1].element);
         buttons.appendChild(deleteButton);
         
-    }
-    
+    } 
 
 
 
